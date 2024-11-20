@@ -8,9 +8,6 @@ def find_primes(n):
     Returns:
     list: A list of prime numbers less than or equal to n
     """
-    # Create a boolean array "is_prime[0..n]" and initialize
-    # all entries it as true. A value in is_prime[i] will
-    # finally be false if i is Not a prime, else true.
     is_prime = [True] * (n + 1)
     is_prime[0] = is_prime[1] = False
     
