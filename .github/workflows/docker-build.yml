@@ -1,34 +1,30 @@
-name: Docker Build Push
+name: Reusable Docker Build Push
 
+# Change this to make it reusable
 on:
-  workflow_call:  
-    inputs:
-      dockerhub_username:
-        description: 'DockerHub Username'
+  workflow_call:
+    secrets:
+      DOCKERHUB_USERNAME:
         required: true
-        type: string
-      dockerhub_access_token:
-        description: 'DockerHub Access Token'
+      DOCKERHUB_ACCESS_TOKEN:
         required: true
-        type: string
 
 jobs:
   docker:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ inputs.dockerhub_username }}
-          password: ${{ inputs.dockerhub_access_token }}
-
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+      
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ inputs.dockerhub_username }}/yourapp:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/yourapp:latest
