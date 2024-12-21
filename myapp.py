@@ -1,13 +1,5 @@
 def find_primes(n):
-    """
-    Find all prime numbers up to n using the Sieve of Eratosthenes algorithm.
     
-    Args:
-    n (int): Upper limit for finding prime numbers
-    
-    Returns:
-    list: A list of prime numbers less than or equal to n
-    """
     is_prime = [True] * (n + 1)
     is_prime[0] = is_prime[1] = False
     
