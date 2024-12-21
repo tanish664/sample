@@ -18,7 +18,7 @@ def find_primes(n):
             for j in range(i * i, n + 1, i):
                 is_prime[j] = False
     
-    # Collect and return all prime numbers
+   
     return [num for num in range(2, n + 1) if is_prime[num]]
 
 # Example usage
