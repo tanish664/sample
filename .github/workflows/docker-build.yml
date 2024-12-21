@@ -1,6 +1,6 @@
 name: Reusable Docker Build Push
 
-# Change this to make it reusable
+
 on:
   workflow_call:
     secrets:
